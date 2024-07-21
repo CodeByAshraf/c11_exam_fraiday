@@ -1,9 +1,17 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:smooth_page_indicator/smooth_page_indicator.dart';
 
-class SecondDesign extends StatelessWidget {
-  const SecondDesign({super.key});
+class SecondDesign extends StatefulWidget {
+  SecondDesign({super.key});
 
+  @override
+  State<SecondDesign> createState() => _SecondDesignState();
+}
+
+class _SecondDesignState extends State<SecondDesign> {
+  final _controller = PageController();
+  bool isSelected = false;
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -116,7 +124,29 @@ class SecondDesign extends StatelessWidget {
               ],
             ),
           ),
-          Image.asset("assets/images/positive.png"),
+          SizedBox(
+            height: 150,
+            child: PageView(
+              controller: _controller,
+              children: [
+                Image.asset("assets/images/PositiveVies.png"),
+                Image.asset("assets/images/PositiveVies.png"),
+                Image.asset("assets/images/PositiveVies.png"),
+                Image.asset("assets/images/PositiveVies.png"),
+              ],
+            ),
+          ),
+          SmoothPageIndicator(
+            controller: _controller,
+            count: 3,
+            effect: ExpandingDotsEffect(
+                //Choose What You Want
+                dotHeight: 10,
+                dotWidth: 10,
+                spacing: 16,
+                dotColor: Colors.black54,
+                activeDotColor: Colors.cyan),
+          ),
           SizedBox(
             height: 40,
           ),
@@ -146,33 +176,140 @@ class SecondDesign extends StatelessWidget {
               ],
             ),
           ),
-          Expanded(child: Image.asset("assets/images/Frame 33.png")),
-          Expanded(child: Image.asset("assets/images/Frame 34.png")),
-          SizedBox(height: 10,)
+          Padding(
+            padding: const EdgeInsets.only(
+              left: 40,
+              right: 40,
+              top: 40
+            ),
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                ChoiceChip(
+
+                  avatar: Image.asset("assets/images/relaxation.png"),
+                  label: Text("Relaxation"),
+                  labelStyle: TextStyle(
+                    fontSize: 21,
+                    fontWeight: FontWeight.bold,
+                  ),
+                  elevation: 5,
+                  pressElevation: 15,
+                  shadowColor: Colors.lightGreen,
+                  surfaceTintColor: Colors.teal,
+                  disabledColor: Colors.grey.shade300,
+                  selectedColor: Colors.green,
+                  selectedShadowColor: Colors.orange,
+                  onSelected: (isSelected) {
+                  },
+                  selected: isSelected,
+                ),
+                ChoiceChip(
+                  avatar: Image.asset("assets/images/meditation.png"),
+                  label: Text("Miditation"),
+                  labelStyle: TextStyle(
+                    fontSize: 21,
+                    fontWeight: FontWeight.bold,
+                  ),
+                  elevation: 5,
+                  pressElevation: 15,
+                  shadowColor: Colors.lightGreen,
+                  surfaceTintColor: Colors.teal,
+                  disabledColor: Colors.grey.shade300,
+                  selectedColor: Colors.green,
+                  selectedShadowColor: Colors.orange,
+                  onSelected: (isSelected) {
+                  },
+                  selected: isSelected,
+                ),
+              ],
+            ),
+          ),
+          Padding(
+            padding: const EdgeInsets.only(
+              left: 40,
+              right: 40,
+              top: 40
+            ),
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                ChoiceChip(
+
+                  avatar: Image.asset("assets/images/beating.png"),
+                  label: Text("Breathing"),
+                  labelStyle: TextStyle(
+                    fontSize: 21,
+                    fontWeight: FontWeight.bold,
+                  ),
+                  elevation: 5,
+                  pressElevation: 15,
+                  shadowColor: Colors.lightGreen,
+                  surfaceTintColor: Colors.teal,
+                  disabledColor: Colors.grey.shade300,
+                  selectedColor: Colors.green,
+                  selectedShadowColor: Colors.orange,
+                  onSelected: (isSelected) {
+                  },
+                  selected: isSelected,
+                ),
+                ChoiceChip(
+                  avatar: Image.asset("assets/images/yoga.png"),
+                  label: Text("Yoga         "),
+                  labelStyle: TextStyle(
+                    fontSize: 21,
+                    fontWeight: FontWeight.bold,
+                  ),
+                  elevation: 5,
+                  pressElevation: 15,
+                  shadowColor: Colors.lightGreen,
+                  surfaceTintColor: Colors.teal,
+                  disabledColor: Colors.grey.shade300,
+                  selectedColor: Colors.green,
+                  selectedShadowColor: Colors.orange,
+                  onSelected: (isSelected) {
+                  },
+                  selected: isSelected,
+                ),
+              ],
+            ),
+          ),
+
+          SizedBox(
+            height: 10,
+          )
         ],
       ),
       bottomNavigationBar: BottomAppBar(
-
         child: BottomNavigationBar(
           items: [
             BottomNavigationBarItem(
-              icon: ImageIcon(AssetImage("assets/images/home.png"),size: 40,color: Colors.indigo,),
+              icon: ImageIcon(
+                AssetImage("assets/images/home.png"),
+                size: 40,
+                color: Colors.indigo,
+              ),
               label: "",
               backgroundColor: Color(0xffb7935f),
             ),
             BottomNavigationBarItem(
-              icon: ImageIcon(AssetImage("assets/images/Icon (1).png"),size: 40,),
+              icon: ImageIcon(
+                AssetImage("assets/images/Icon (1).png"),
+                size: 40,
+              ),
               label: "",
               backgroundColor: Color(0xffb7935f),
             ),
             BottomNavigationBarItem(
-              icon: ImageIcon(AssetImage("assets/images/grid-01.png"),size: 40,),
+              icon: ImageIcon(
+                AssetImage("assets/images/grid-01.png"),
+                size: 40,
+              ),
               label: "",
               backgroundColor: Color(0xffb7935f),
             ),
           ],
         ),
-
       ),
     );
   }
